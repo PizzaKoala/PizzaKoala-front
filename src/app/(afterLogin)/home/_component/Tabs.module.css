@@ -1,0 +1,75 @@
+.frame {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 130px;
+}
+
+.post {
+  width: 95vw;
+  position: relative;
+}
+
+/* 탭 1과 겹치는 부분만 숨김 */
+.hideUnderline1::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: 100px;
+  width: 90vw;
+  height: 2px;
+  /* background-color: #d3d3d3; */
+  background-color: #13af5b;
+  transition: 0.2s ease-in-out;
+}
+
+/* 탭 2와 겹치는 부분만 숨김 */
+.hideUnderline2::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  right: 0px;
+  width: 95vw;
+  height: 2px;
+  background-color: #13af5b;
+  transition: 0.2s ease-in-out;
+}
+
+.group {
+  display: flex;
+  flex-direction: row;
+  left: 0;
+  width: 95vw;
+  height: 40px;
+  gap: 15px;
+}
+
+.list1,
+.list2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 100px;
+  border: 2px solid #13af5b;
+  border-radius: 0.4rem 0.4rem 0 0;
+  cursor: pointer;
+  padding: 10px;
+  border-bottom: none;
+}
+
+.list1_color {
+  /* border: 2px solid #13af5b; */
+  border-bottom: none;
+  background-color: #13af5b;
+  color: white;
+}
+
+.list2_color {
+  /* border: 2px solid #13af5b; */
+  border-bottom: none;
+  background-color: #13af5b;
+  color: white;
+}

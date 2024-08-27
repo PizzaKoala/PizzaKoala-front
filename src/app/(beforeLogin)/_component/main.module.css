@@ -1,0 +1,153 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(var(--background-end-rgb));
+  width: 100dvw;
+  height: 100dvh;
+}
+
+@media all and (min-width: 1000px) {
+  .container {
+    flex-direction: row;
+    padding: 0;
+  }
+
+  @font-face {
+    font-family: "Lilita One";
+    src: url("../../../../public/fonts/LilitaOne-Regular.ttf")
+      format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "HiMelody";
+    src: url("../../../../public/fonts/HiMelody-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  .container {
+    background-color: #fff;
+    width: 100dvw;
+    height: 100dvh;
+  }
+
+  .all {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    padding: 100px;
+  }
+
+  .left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    gap: 10px;
+  }
+
+  .right {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .rightName {
+    font-size: 65px;
+    font-weight: 500;
+    font-family: "Lilita One", sans-serif;
+  }
+
+  .rightBox {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid #13af5b;
+    border-radius: 1rem;
+    background-color: #13af5b;
+    width: 400px;
+    height: 500px;
+  }
+
+  .signup {
+    width: 300px;
+    height: 40px;
+    border-radius: 20px;
+    padding: 0 16px;
+    font-size: 15px;
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .login {
+    width: 300px;
+    height: 40px;
+    border-radius: 20px;
+    padding: 0 16px;
+    font-size: 30px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .login:hover {
+    background-color: rgba(29, 155, 240, 0.1);
+  }
+
+  .main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .name {
+    font-size: 70px;
+    font-weight: 600;
+    font-family: "HiMelody", sans-serif;
+  }
+
+  .button {
+    background-color: black;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.6rem;
+    width: 340px;
+  }
+
+  .input {
+    background-color: #acfdd1;
+    border-radius: 0.6rem;
+    width: 340px;
+    height: 60px;
+    padding-left: 10px;
+    border: none;
+    outline: none;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .input::placeholder {
+    color: black;
+    font-weight: bolder;
+    font-size: 15px;
+  }
+
+  .input:focus::placeholder {
+    color: gray;
+  }
+
+  .input:focus {
+    box-shadow: 0 0 3px black;
+    border: 1px solid black;
+  }
+}

@@ -7,11 +7,13 @@ import ActionButtons from "@/app/(afterLogin)/_component/ActionButtons";
 import PostArticle from "@/app/(afterLogin)/_component/PostArticle";
 import { faker } from "@faker-js/faker";
 import PostImages from "@/app/(afterLogin)/_component/PostImages";
+import { Post as IPost } from "@/model/Post";
 
 dayjs.locale("ko");
 dayjs.extend(relativeTime);
 
 type Props = {
+  post: IPost;
   noImage?: boolean;
 };
 export default function Post({ noImage }: Props) {

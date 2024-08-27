@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import style from "./Tabs.module.css";
+import { useContext } from "react";
+import { TabContext } from "@/app/(afterLogin)/home/_component/TabProvider";
 
 export default function Tabs() {
   // 선택된 리스트 항목을 관리하는 상태
@@ -11,7 +13,8 @@ export default function Tabs() {
     setActiveList(listName);
   };
 
-  const [tab, setTab] = useState("rec");
+  // const [tab, setTab] = useState("rec");
+  const { tab, setTab } = useContext(TabContext);
 
   const onClickRec = () => {
     setTab("rec");

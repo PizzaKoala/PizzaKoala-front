@@ -13,29 +13,19 @@ dayjs.locale("ko");
 dayjs.extend(relativeTime);
 
 type Props = {
-  post: IPost;
   noImage?: boolean;
+  post: IPost;
 };
-export default function Post({ noImage }: Props) {
-  const target = {
-    postId: 1,
-    User: {
-      id: "yeong6415",
-      nickname: "HANADURI",
-      image: "/utopia.webp",
-    },
-    content: "피자코알라 테스트",
-    createdAt: new Date(),
-    Images: [] as any[],
-  };
-  if (Math.random() > 0.5 && !noImage) {
-    target.Images.push(
-      { imageId: 1, link: faker.image.urlLoremFlickr() },
-      { imageId: 2, link: faker.image.urlLoremFlickr() },
-      { imageId: 3, link: faker.image.urlLoremFlickr() },
-      { imageId: 4, link: faker.image.urlLoremFlickr() }
-    );
-  }
+export default function Post({ noImage, post }: Props) {
+  const target = post;
+  // if (Math.random() > 0.5 && !noImage) {
+  //   target.Images.push(
+  //     { imageId: 1, link: faker.image.urlLoremFlickr() },
+  //     { imageId: 2, link: faker.image.urlLoremFlickr() },
+  //     { imageId: 3, link: faker.image.urlLoremFlickr() },
+  //     { imageId: 4, link: faker.image.urlLoremFlickr() }
+  //   );
+  // }
 
   return (
     <PostArticle post={target}>

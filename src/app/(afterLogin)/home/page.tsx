@@ -1,30 +1,62 @@
-import style from "./home.module.css";
-import Tabs from "./_component/Tabs";
-import TabProvider from "./_component/TabProvider";
-import PostForm from "./_component/PostForm";
-import Post from "@/app/(afterLogin)/_component/Post";
-import { Post as IPost } from "@/model/Post";
-import TabDecider from "./_component/TabDecider";
+// import style from "./home.module.css";
+// import HomeTabs from "./_component/HomeTabs";
+// import TabProvider from "./_component/TabProvider";
+// import PostForm from "./_component/PostForm";
+// import Post from "@/app/(afterLogin)/_component/Post";
+// import PostRecommends from "./_component/PostRecommends";
+// import { getPostRecommends } from "./_lib/getPostRecommends";
+// import {
+//   QueryClient,
+//   dehydrate,
+//   HydrationBoundary,
+// } from "@tanstack/react-query";
+// import TabDecider from "./_component/TabDecider";
 
-export default function Home() {
-  // 테스트용으로 사용할 임시 데이터 생성
-  const samplePost: IPost = {
-    postId: 1,
-    User: {
-      id: "sampleUser",
-      nickname: "Sample User",
-      image: "/sampleImage.jpg",
-    },
-    content: "This is a sample post for testing.",
-    createdAt: new Date(),
-  };
+// export default async function Home() {
+//   const queryClient = new QueryClient();
+//   await queryClient.prefetchInfiniteQuery({
+//     queryKey: ["posts", "recommends"],
+//     queryFn: getPostRecommends,
+//     initialPageParam: 0,
+//   });
+//   const dehydratedState = dehydrate(queryClient);
+
+//   return (
+//     <main className={style.main}>
+//       <HydrationBoundary state={dehydratedState}>
+//         <TabProvider>
+//           <HomeTabs />
+//           {/* <PostForm /> */}
+//           <TabDecider />
+//           <div className={style.innerPost}>
+//             <PostRecommends />
+//           </div>
+//         </TabProvider>
+//       </HydrationBoundary>
+//     </main>
+//   );
+// }
+
+import style from "./home.module.css";
+import HomeTabs from "@/app/(afterLogin)/home/_component/HomeTabs";
+import TabProvider from "@/app/(afterLogin)/home/_component/TabProvider";
+import PostForm from "@/app/(afterLogin)/home/_component/PostForm";
+import { Suspense } from "react";
+import Loading from "@/app/(afterLogin)/home/loading";
+import TabDeciderSuspense from "@/app/(afterLogin)/home/_component/TabDeciderSuspense";
+
+export default async function Home() {
   return (
     <main className={style.main}>
       <TabProvider>
-        <Tabs />
-        <PostForm />
-        <TabDecider />
-        <Post post={samplePost} />
+        <HomeTabs />
+        {/* <PostForm /> */}
+        <div className={style.postList}>
+          <Suspense fallback={<Loading />}>
+            {/* <Suspense> */}
+            <TabDeciderSuspense />
+          </Suspense>
+        </div>
       </TabProvider>
     </main>
   );

@@ -1,11 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import style from "./Tabs.module.css";
+import React, { useState, useEffect } from "react";
+import style from "./tabs.module.css";
 import { useContext } from "react";
 import { TabContext } from "@/app/(afterLogin)/home/_component/TabProvider";
+import { useRouter, useSearchParams } from "next/navigation";
 
-export default function Tabs() {
+export default function HomeTabs() {
+  // const router = useRouter();
+  // const searchParams = useSearchParams();
   // 선택된 리스트 항목을 관리하는 상태
   const [activeList, setActiveList] = useState("list1");
 
@@ -18,10 +21,12 @@ export default function Tabs() {
 
   const onClickRec = () => {
     setTab("rec");
+    // router.replace(`/search?q=${searchParams.get("q")}`);
   };
 
   const onClickFol = () => {
     setTab("fol");
+    // router.replace(`/search?${searchParams.toString()}&f=live`);
   };
 
   return (

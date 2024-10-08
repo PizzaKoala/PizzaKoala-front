@@ -10,18 +10,29 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 40px;
+  padding: 20px 40px;
   position: fixed;
   width: 100%;
   z-index: 1;
-  background-color: rgba(255, 255, 255, 0.5); /* 투명 배경 */
+  /* 투명 배경 */
+  background-color: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(12px);
 }
 
-.name,
+/* .name,
 .search,
 .plus,
 .profile {
+  min-width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+.name,
+.search,
+.plus {
   min-width: 50px;
   height: 50px;
   display: flex;
@@ -64,6 +75,7 @@
   align-items: center;
   justify-content: center;
   padding: 0 10px;
+  position: relative;
 }
 
 .search_bar svg {
@@ -85,6 +97,43 @@
   margin-left: 5px;
   font-size: 15px;
   width: 100%;
+}
+
+/*
+/* input 요소의 기본 브라우저 스타일을 무효화 */
+.search_bar input[type="search"] {
+  -webkit-appearance: none; /* 크롬, 사파리 브라우저의 기본 검색 input 스타일 제거 */
+  -moz-appearance: none; /* 파이어폭스 브라우저의 기본 검색 input 스타일 제거 */
+  appearance: none;
+}
+
+/* 웹킷 기반 브라우저에서 자동 완성된 필드의 배경색 제거 */
+.search_bar input:-webkit-autofill {
+  background-color: white !important; /* 자동 완성 시 배경색을 흰색으로 설정 */
+  color: inherit !important; /* 텍스트 색상도 상속 */
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+  box-shadow: 0 0 0px 1000px rgb(239, 243, 244) inset !important;
+}
+
+/* input에 내용이 있을 때 X 버튼이 안 보이게 */
+.search_bar input::-webkit-search-cancel-button {
+  -webkit-appearance: none; /* 크롬, 사파리 브라우저에서 X 버튼 제거 */
+  appearance: none;
+}
+
+.xbutton {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  display: none;
+  border: none;
+  outline: none;
+}
+
+.search_bar input:not(:placeholder-shown) + .xbutton {
+  display: block; /* 내용이 있을 때 버튼 표시 */
 }
 
 .name {
@@ -144,7 +193,7 @@
   min-width: 180px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   border-radius: 0.7rem;
-  top: 60px;
+  top: 70px;
   right: 0;
   width: 200px;
 }
@@ -179,4 +228,35 @@
   width: 15px;
   margin-right: 15px;
   padding-left: 5px;
+}
+
+.logOutButton {
+  border: none;
+  background-color: #f9f9f9;
+  padding-left: 15px;
+  padding-bottom: 20px;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.732);
+}
+
+.all:hover {
+  background-color: #f1f1f1;
+  border-radius: 0.7rem;
+
+  .logOutButton {
+    background-color: #f1f1f1;
+    font-weight: bold;
+  }
+}
+
+.all {
+  min-width: 200px;
+  display: flex;
+  flex-direction: row;
+  padding-left: 21px;
+  padding-top: 20px;
+}
+
+.circle {
+  margin-top: 5px;
 }

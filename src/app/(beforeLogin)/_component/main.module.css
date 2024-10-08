@@ -150,4 +150,8 @@
     box-shadow: 0 0 3px black;
     border: 1px solid black;
   }
+
+  .message {
+    color: red;
+  }
 }

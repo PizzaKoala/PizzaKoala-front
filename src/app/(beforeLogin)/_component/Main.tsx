@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./main.module.css";
 import pizzaKoala from "../../../../public/pizzaKoala_logo.png";
+import LoginForm from "./LoginForm";
+import Alert from "./Alert";
 
 export default function Main() {
   return (
@@ -9,7 +11,7 @@ export default function Main() {
       <div className={styles.left}>
         <div className={styles.main}>
           <p className={styles.name}>피자코알라</p>
-          <Image src={pizzaKoala} alt="logo" width={300}></Image>
+          <img src="/pizzaKoala_logo.png" alt="logo" width={300}></img>
         </div>
         <h2 className={styles.ment}>
           하루를 시작하는 당신에게 작은 도전, 하루를 종료하는 당신에게는
@@ -17,8 +19,10 @@ export default function Main() {
           일상을 변화시켜보세요.
         </h2>
       </div>
-      <div className={styles.right}>
-        <div className={styles.rightBox}>
+      {/* <div className={styles.right}> */}
+      <LoginForm />
+      <Alert />
+      {/* <div className={styles.rightBox}>
           <p className={styles.rightName}>PizzaKoala</p>
           <input
             type="text"
@@ -39,8 +43,8 @@ export default function Main() {
           <Link href="/i/flow/signup" className={styles.signup}>
             계정 만들기
           </Link>
-        </div>
-      </div>
+        </div> */}
     </div>
+    // </div>
   );
 }

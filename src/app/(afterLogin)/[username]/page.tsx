@@ -55,17 +55,21 @@ import { getUser } from "@/app/(afterLogin)/[username]/_lib/getUser";
 import { getUserPosts } from "@/app/(afterLogin)/[username]/_lib/getUserPosts";
 
 type Props = {
-  params: { username: string };
+  // params: { postId: string };
+  params: { memberId: string };
 };
 export default async function Profile({ params }: Props) {
-  const { username } = params;
+  // const { postId } = params;
+  const { memberId } = params;
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
-    queryKey: ["users", username],
+    // queryKey: ["users", postId],
+    queryKey: ["users", memberId],
     queryFn: getUser,
   });
   await queryClient.prefetchQuery({
-    queryKey: ["posts", "users", username],
+    // queryKey: ["posts", "users", postId],
+    queryKey: ["posts", "users", memberId],
     queryFn: getUserPosts,
   });
   const dehydratedState = dehydrate(queryClient);
@@ -73,9 +77,11 @@ export default async function Profile({ params }: Props) {
   return (
     <main className={style.main}>
       <HydrationBoundary state={dehydratedState}>
-        <UserInfo username={username} />
+        {/* <UserInfo postId={postId} /> */}
+        <UserInfo postId={memberId} />
         <div>
-          <UserPosts username={username} />
+          {/* <UserPosts postId={postId} /> */}
+          <UserPosts postId={memberId} />
         </div>
       </HydrationBoundary>
     </main>

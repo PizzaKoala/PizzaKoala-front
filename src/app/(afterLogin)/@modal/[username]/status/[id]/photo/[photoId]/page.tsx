@@ -40,7 +40,8 @@ export default async function PageModal({ params }: Props) {
         <PhotoModalCloseButton />
         <ImageZone id={id} />
         <div className={style.commentZone}>
-          <SinglePost id={id} noImage />
+          {/* <SinglePost id={id} noImage /> */}
+          <SinglePost postId={id} noImage />
           <CommentForm id={id} />
           <Comments id={id} />
         </div>

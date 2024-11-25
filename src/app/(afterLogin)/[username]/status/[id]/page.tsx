@@ -40,17 +40,22 @@ import React from "react";
 import Comments from "@/app/(afterLogin)/[username]/status/[id]/_component/Comments";
 
 type Props = {
-  params: { id: string };
+  // params: { id: string };
+  params: { postId: string };
 };
+
 export default async function Page({ params }: Props) {
-  const { id } = params;
+  // const { id } = params;
+  const { postId } = params;
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
-    queryKey: ["posts", id],
+    // queryKey: ["posts", id],
+    queryKey: ["posts", postId],
     queryFn: getSinglePost,
   });
   await queryClient.prefetchQuery({
-    queryKey: ["posts", id, "comments"],
+    // queryKey: ["posts", id, "comments"],
+    queryKey: ["posts", postId, "comments"],
     queryFn: getComments,
   });
   const dehydratedState = dehydrate(queryClient);
@@ -62,10 +67,14 @@ export default async function Page({ params }: Props) {
           <BackButton />
           <h3 className={style.headerTitle}>게시하기</h3>
         </div>
-        <SinglePost id={id} />
-        <CommentForm id={id} />
+        {/* <SinglePost postId={id} /> */}
+        <SinglePost postId={postId} />
+        {/* <SinglePost id={id} /> */}
+        <CommentForm id={postId} />
+        {/* <CommentForm postId={postId} /> */}
         <div>
-          <Comments id={id} />
+          {/* <Comments id={id} /> */}
+          <Comments id={postId} />
         </div>
       </HydrationBoundary>
     </div>

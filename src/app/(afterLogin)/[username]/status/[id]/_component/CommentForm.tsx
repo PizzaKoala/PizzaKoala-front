@@ -2,15 +2,18 @@
 
 import { useRef, useState } from "react";
 import style from "./commentForm.module.css";
-import { useQueryClient } from "@tanstack/react-query";
+import { useQueryClient, useQuery } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 import email from "next-auth/providers/email";
 import Image from "next/image";
 
 type Props = {
   id: string;
+  // postId: string;
+  // id: number;
 };
 export default function CommentForm({ id }: Props) {
+  // export default function CommentForm({ postId }: Props) {
   const [content, setContent] = useState("");
   const imageRef = useRef<HTMLInputElement>(null);
   const { data: me } = useSession();
@@ -22,7 +25,10 @@ export default function CommentForm({ id }: Props) {
 
   const queryClient = useQueryClient();
   const post = queryClient.getQueryData(["posts", id]);
+  // const post = queryClient.getQueryData(["posts", postId]);
+  // const post = useQuery(["posts", id]);
   console.log("post", post, id);
+  // console.log("post", post, postId);
   if (!post) {
     return null;
   }

@@ -39,7 +39,7 @@ export default function HomeTabs() {
           onClick={() => handleListClick("list1")}
           style={{ fontWeight: activeList === "list1" ? "bold" : "normal" }}
         >
-          <div onClick={onClickRec}>팔로우</div>
+          <div onClick={onClickRec}>추천순</div>
         </div>
         <div
           className={`${style.list2} ${
@@ -48,7 +48,7 @@ export default function HomeTabs() {
           onClick={() => handleListClick("list2")}
           style={{ fontWeight: activeList === "list2" ? "bold" : "normal" }}
         >
-          <div onClick={onClickFol}>추천순</div>
+          <div onClick={onClickFol}>팔로우</div>
         </div>
       </div>
 

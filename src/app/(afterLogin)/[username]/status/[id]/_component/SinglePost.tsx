@@ -40,5 +40,6 @@ export default function SinglePost({ id, noImage }: Props) {
   if (!post) {
     return null;
   }
-  return <Post key={post.postId} post={post} noImage={noImage} />;
+  // return <Post key={post.postId} post={post} noImage={noImage} />;
+  return <Post key={post.memberId} post={post}></Post>;
 }

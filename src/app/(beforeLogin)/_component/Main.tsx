@@ -11,13 +11,18 @@ export default function Main() {
       <div className={styles.left}>
         <div className={styles.main}>
           <p className={styles.name}>피자코알라</p>
-          <img src="/pizzaKoala_logo.png" alt="logo" width={300}></img>
+          <img
+            className={styles.imageAnimation}
+            src="/pizzaKoala_logo.png"
+            alt="logo"
+            width={300}
+          ></img>
         </div>
-        <h2 className={styles.ment}>
+        <div className={styles.ment}>
           하루를 시작하는 당신에게 작은 도전, 하루를 종료하는 당신에게는
           자랑스러운 성취감을 선사하는 피자코알라와 함께, 지금 당장 당신의
           일상을 변화시켜보세요.
-        </h2>
+        </div>
       </div>
       {/* <div className={styles.right}> */}
       <LoginForm />

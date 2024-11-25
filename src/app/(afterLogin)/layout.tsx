@@ -107,13 +107,21 @@ import { ReactNode } from "react";
 import SearchForm from "./search/_component/SearchForm";
 import Frame from "@/app/(afterLogin)/_component/Frame";
 import RQProvider from "./_component/RQProvider";
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
 
 type Props = {
   children: ReactNode;
   modal: ReactNode;
 };
 
-export default function AfterLoginLayout({ children, modal }: Props) {
+export default async function AfterLoginLayout({ children, modal }: Props) {
+  const session = await auth();
+
+  // session이 없을 경우 로그인 페이지로 리다이렉트
+  // if (!session?.user) {
+  //   redirect("/i/flow/login");
+  // }
   return (
     <div className={style.container}>
       <header className={style.header}>
@@ -130,7 +138,7 @@ export default function AfterLoginLayout({ children, modal }: Props) {
             className={style.profileImg}
           ></img>
         </Link>
-        <Frame></Frame>
+        <Frame me={session}></Frame>
         {/* <div className={style.profile}>
           <div className={style.account}>
             <Image

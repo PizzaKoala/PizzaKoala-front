@@ -27,6 +27,13 @@
     font-style: normal;
   }
 
+  @font-face {
+    font-family: "SejongGeulggot";
+    src: url("../../../../public/fonts/SejongGeulggot.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
   .container {
     background-color: #fff;
     width: 100dvw;
@@ -36,7 +43,9 @@
   .all {
     display: flex;
     flex-direction: row;
+    width: 90vw;
     height: 100vh;
+    margin: 0 auto;
     padding: 100px;
   }
 
@@ -58,9 +67,10 @@
   }
 
   .rightName {
-    font-size: 65px;
+    font-size: 55px;
     font-weight: 500;
     font-family: "Lilita One", sans-serif;
+    margin-top: 15px;
   }
 
   .rightBox {
@@ -75,6 +85,12 @@
     height: 500px;
   }
 
+  .formCenter {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
   .signup {
     width: 300px;
     height: 40px;
@@ -86,6 +102,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .signupText {
+    margin-left: 5px;
+    font-weight: bold;
   }
 
   .login {
@@ -107,33 +128,108 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 30px;
+    gap: 5px;
   }
 
   .name {
-    font-size: 70px;
+    font-size: 50px;
     font-weight: 600;
     font-family: "HiMelody", sans-serif;
+    margin-left: 30px;
+  }
+
+  .ment {
+    font-size: 25px;
+    font-family: "SejongGeulggot", sans-serif;
+  }
+
+  @keyframes moveUpDown {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-10px) rotate(5deg);
+    }
+  }
+
+  .imageAnimation {
+    animation: moveUpDown 1.5s ease-in-out infinite; /* 2초 동안 반복 애니메이션 */
   }
 
   .button {
     background-color: black;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
     padding: 10px 20px;
     border: none;
     cursor: pointer;
     border-radius: 0.6rem;
-    width: 340px;
+    width: 320px;
+    height: 50px;
+  }
+
+  .divider {
+    display: flex; /* Flexbox로 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    text-align: center; /* 텍스트 정렬 */
+    margin: 1rem 0;
+    width: 80%;
+  }
+
+  .line {
+    flex-grow: 1; /* 선을 양쪽으로 확장 */
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.318);
+    border: none;
+  }
+
+  .divider span {
+    margin: 0 1rem;
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.518);
+  }
+
+  .googleBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0.75rem 0.5rem;
+    background-color: white;
+    border-radius: 0.6rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.427), 0 1px 2px rgba(0, 0, 0, 0.06);
+    font-size: 0.875rem; /* text-sm */
+    transition: background-color 0.2s ease-in-out; /* Smooth hover effect */
+    border: 1px solid white;
+  }
+
+  .googleBtn:hover {
+    background-color: #f3f4f6; /* hover:bg-gray-100 */
+  }
+
+  .googleIcon {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 1.25rem;
+  }
+
+  .googleText {
+    color: rgba(0, 0, 0, 0.54); /* text-black-54 (custom color based on name) */
+    font-weight: 600; /* font-semibold */
   }
 
   .input {
     background-color: #acfdd1;
     border-radius: 0.6rem;
-    width: 340px;
-    height: 60px;
+    width: 320px;
+    height: 50px;
     padding-left: 10px;
     border: none;
     outline: none;
     transition: box-shadow 0.3s ease;
+    margin: 0 auto;
   }
 
   .input::placeholder {

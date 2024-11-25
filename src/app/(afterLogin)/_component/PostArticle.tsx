@@ -3,26 +3,23 @@
 import { ReactNode } from "react";
 import style from "./post.module.css";
 import { useRouter } from "next/navigation";
+import { Post as IPost } from "@/model/Post";
 
 type Props = {
   children: ReactNode;
-  post: {
-    postId: number;
-    content: string;
-    User: {
-      id: string;
-      nickname: string;
-      image: string;
-    };
-    createdAt: Date;
-    Images: any[];
-  };
+  post: IPost;
 };
 
 export default function PostArticle({ children, post }: Props) {
   const router = useRouter();
   const onClick = () => {
-    router.push(`/${post.User.id}/status/${post.postId}`);
+    if (post.id) {
+      // if (post.id && post.nickName) {
+      console.log("Post Data:", post);
+      router.push(`/${post.nickName}/status/${post.id}`);
+    } else {
+      console.error("Post or User information is missing:", post);
+    }
   };
 
   return (

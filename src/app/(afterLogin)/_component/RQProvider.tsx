@@ -26,6 +26,7 @@ function RQProvider({ children }: Props) {
   return (
     <QueryClientProvider client={client}>
       {children}
+      {/*  개발 모드일때만 데브툴 사용*/}
       <ReactQueryDevtools
         initialIsOpen={process.env.NEXT_PUBLIC_MODE === "local"}
       />

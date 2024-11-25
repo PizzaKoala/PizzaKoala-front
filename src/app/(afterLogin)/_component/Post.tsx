@@ -31,24 +31,44 @@ export default function Post({ noImage, post }: Props) {
     <PostArticle post={target}>
       <div className={style.postWrapper}>
         <div className={style.postUserSection}>
-          <Link href={`/${target.User.id}`} className={style.postUserImage}>
-            <img src={target.User.image} alt={target.User.nickname} />
+          {/* <Link href={`/${target.User.id}`} className={style.postUserImage}> */}
+          <Link href={`/${target.id}`} className={style.postUserImage}>
+            {/* <img src={target.User.image} alt={target.User.nickname} /> */}
+            <img src={target.imageUrl} />
+            {/* <img src={target.profileUrl} alt={target.nickName} /> */}
             <div className={style.postShade} />
           </Link>
         </div>
         <div className={style.postBody}>
           <div className={style.postMeta}>
-            <Link href={`/${target.User.id}`}>
-              <span className={style.postUserName}>{target.User.nickname}</span>
+            {/* <Link href={`/${target.User.id}`}> */}
+            {/* <Link href={`/${target.id}`}> */}
+            <Link href={`/${target.memberId}`}>
+              <span className={style.postUserName}>{target.nickName}</span>
+              <span className={style.postUserId}>@{target.memberId}</span>
+              {/* <span className={style.postUserName}>{target.User.nickname}</span> */}
+              {/* nickname이 필요함!!!!! */}
               &nbsp;
-              <span className={style.postUserId}>@{target.User.id}</span>
+              {/* <span className={style.postUserId}>@{target.User.id}</span> */}
+              {/* <span className={style.postUserId}>@{target.id}</span> */}
               &nbsp; · &nbsp;
             </Link>
             <span className={style.postDate}>
               {dayjs(target.createdAt).fromNow(true)}
             </span>
           </div>
-          <div>{target.content}</div>
+          {/* <div>{target.content}</div> */}
+          {/* content도 필요함!!! */}
+          <div>{target.title}</div>
+          <div>{target.desc}</div>
+          {/* <div>{target.description}</div> */}
+
+          {/* <div>
+            {target.url.map((image, index) => (
+              <img key={index} src={image} alt={`Post image ${index + 1}`} />
+            ))}
+          </div> */}
+
           <div>
             <PostImages post={target} />
           </div>

@@ -4,46 +4,32 @@ import style from "./signup.module.css";
 import BackButton from "./BackButton";
 import onSubmit from "../_lib/signup";
 import { useFormState, useFormStatus } from "react-dom";
-import { useState } from "react";
-import handleFormSubmission from "../_lib/signup";
+import { useRouter } from "next/navigation";
 
-function showMessage(messasge: string | null | undefined) {
-  if (messasge === "no_id") {
-    return "아이디를 입력하세요.";
+function showMessage(message: string | null) {
+  switch (message) {
+    case "no_email":
+      return "아이디를 입력하세요.";
+    case "no_nickName":
+      return "닉네임을 입력하세요.";
+    case "no_password":
+      return "비밀번호를 입력하세요.";
+    case "no_file":
+      return "이미지를 업로드하세요.";
+    case "user_exists":
+      return "이미 사용 중인 아이디입니다.";
+    default:
+      return "";
   }
-  if (messasge === "no_name") {
-    return "닉네임을 입력하세요.";
-  }
-  if (messasge === "no_password") {
-    return "비밀번호를 입력하세요.";
-  }
-  if (messasge === "no_image") {
-    return "이미지를 업로드하세요.";
-  }
-  if (messasge === "user_exists") {
-    return "이미 사용 중인 아이디입니다.";
-  }
-  return "";
 }
 
 export default function SignupModal() {
+  const router = useRouter();
+
   const [state, formAction] = useFormState(onSubmit, { message: null });
+
   const { pending } = useFormStatus();
-
-  // export default function SignupModal() {
-  //   const [formState, setFormState] = useState<{ message: string | null }>({
-  //     message: null,
-  //   });
-  //   const [isPending, setIsPending] = useState(false);
-
-  //   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-  //     event.preventDefault();
-  //     setIsPending(true);
-  //     const formData = new FormData(event.currentTarget);
-  //     const result = await handleFormSubmission(null, formData);
-  //     setFormState(result);
-  //     setIsPending(false);
-  //   };
+  console.log("state", state);
 
   return (
     <>
@@ -53,16 +39,16 @@ export default function SignupModal() {
             <BackButton />
             <div>계정을 생성하세요.</div>
           </div>
-          <form action={formAction}>
-            {/* <form onSubmit={onSubmit}> */}
+          <form action={formAction} encType="multipart/form-data">
+            {/* <form action={formAction}> */}
             <div className={style.modalBody}>
               <div className={style.inputDiv}>
-                <label className={style.inputLabel} htmlFor="id">
-                  아이디
+                <label className={style.inputLabel} htmlFor="email">
+                  이메일
                 </label>
                 <input
-                  id="id"
-                  name="id"
+                  id="email"
+                  name="email"
                   className={style.input}
                   type="text"
                   placeholder=""
@@ -70,12 +56,12 @@ export default function SignupModal() {
                 />
               </div>
               <div className={style.inputDiv}>
-                <label className={style.inputLabel} htmlFor="name">
+                <label className={style.inputLabel} htmlFor="nickName">
                   닉네임
                 </label>
                 <input
-                  id="name"
-                  name="name"
+                  id="nickName"
+                  name="nickName"
                   className={style.input}
                   type="text"
                   placeholder=""
@@ -101,11 +87,11 @@ export default function SignupModal() {
                 </label>
                 <input
                   id="image"
-                  name="image"
+                  name="file"
+                  required
                   className={style.input}
                   type="file"
                   accept="image/*"
-                  required
                 />
               </div>
             </div>
@@ -114,14 +100,10 @@ export default function SignupModal() {
                 type="submit"
                 className={style.actionButton}
                 disabled={pending}
-                // disabled={isPending}
               >
                 가입하기
               </button>
               <div className={style.error}>{showMessage(state?.message)}</div>
-              <div className={style.error}>
-                {/* {showMessage(formState?.message)} */}
-              </div>
             </div>
           </form>
         </div>

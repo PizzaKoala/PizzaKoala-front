@@ -6,26 +6,44 @@ import circle from "../../../../public/icon/red_circle.png";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { signOut, useSession } from "next-auth/react";
+import { Session } from "@auth/core/types";
 
-export default function Frame() {
+type Props = {
+  me: Session | null;
+};
+
+export default function Frame({ me }: Props) {
   const router = useRouter();
-  const { data: me } = useSession();
+  // const { data: me } = useSession();
   // const me = {
   //   // 임시로 내 정보 있는것처럼
   //   id: "JiYeong",
   //   nickname: "HANADURI",
   //   image: "/car.jpg",
   // };
-
+  console.log("me", me);
   if (!me?.user) {
+    console.log("No user found in session:", me);
     return null;
   }
 
   const onLogout = () => {
-    signOut({ redirect: false }).then(() => {
+    signOut({ callbackUrl: "/" }).then(() => {
       router.replace("/");
     });
   };
+
+  // const onLogout = async () => {
+  //   try {
+  //     const response = await signOut({
+  //       redirect: false,
+  //     });
+  //     console.log("signout", response);
+  //     router.replace("/");
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   return (
     // <div className={style.container}>
@@ -71,7 +89,9 @@ export default function Frame() {
               width={10}
               height={10}
             />
-            <button className={style.logOutButton}>로그아웃</button>
+            <button className={style.logOutButton} onClick={onLogout}>
+              로그아웃
+            </button>
           </div>
         </div>
       </div>
